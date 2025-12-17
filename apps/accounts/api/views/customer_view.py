@@ -37,7 +37,7 @@ class CustomerListView(generics.ListAPIView):
         'email',       
         'first_name',  
         'last_name',  
-        'local'  
+        'local__name'
     ]
 
 
