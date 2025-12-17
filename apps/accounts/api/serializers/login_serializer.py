@@ -6,7 +6,7 @@ from rest_framework import serializers
 from apps.accounts.api.serializers.user_serializer import GroupSerializer
 
 User = get_user_model()
-
+        
 class CustomUserDetailsSerializer(UserDetailsSerializer):
     groups = GroupSerializer(many=True, read_only=True)
     full_name = serializers.SerializerMethodField()
@@ -47,7 +47,7 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         if hasattr(user, 'phone_number'):
             token['phone_number'] = user.phone_number
         if hasattr(user, 'local'):
-            token['local'] = user.local
+            token['local'] = user.local.pk if user.local else None
             
         return token
 

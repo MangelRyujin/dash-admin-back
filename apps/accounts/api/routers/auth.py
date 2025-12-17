@@ -2,6 +2,7 @@ from dj_rest_auth.views import LogoutView, PasswordChangeView,UserDetailsView, P
 from django.urls import path
 from apps.accounts.api.views.admin_view import AdminIdChangePasswordView, AdminListView, AdminRegisterAPIView, AdminToggleStatusAPIView, AdminUpdateAPIView
 from apps.accounts.api.views.auth_views import CustomTokenObtainPairView, CustomTokenRefreshView, CustomTokenVerifyView
+from apps.accounts.api.views.customer_view import CustomerListView, CustomerRegisterAPIView, CustomerToggleStatusAPIView, CustomerIdChangePasswordView, CustomerUpdateAPIView
 from apps.accounts.api.views.user_views import  UserRegisterAPIView
 
 urlpatterns = [
@@ -22,4 +23,11 @@ urlpatterns = [
     path("admin/<int:pk>/change-status/", AdminToggleStatusAPIView.as_view(), name="admin-change-status-by-id"),
     path("admin/<int:pk>/change-password/", AdminIdChangePasswordView.as_view(), name="admin-change-password-by-id"),
     path("admin/<int:pk>/update/", AdminUpdateAPIView.as_view(), name="admin-update-by-id"),
+    
+    # Customer
+    path("customer/", CustomerListView.as_view(), name="customer-list"),
+    path("customer/register/", CustomerRegisterAPIView.as_view(), name="customer-register"),
+    path("customer/<int:pk>/change-status/", CustomerToggleStatusAPIView.as_view(), name="customer-change-status-by-id"),
+    path("customer/<int:pk>/change-password/", CustomerIdChangePasswordView.as_view(), name="customer-change-password-by-id"),
+    path("customer/<int:pk>/update/", CustomerUpdateAPIView.as_view(), name="customer-update-by-id"),
 ]
