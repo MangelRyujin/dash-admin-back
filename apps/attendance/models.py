@@ -1,5 +1,6 @@
 from django.db import models
 from apps.accounts.models import User
+from apps.core.models import Local
 
 class Attendance(models.Model):
     user = models.ForeignKey(

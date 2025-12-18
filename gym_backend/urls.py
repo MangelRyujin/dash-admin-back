@@ -38,6 +38,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('apps.accounts.api.routers.auth')),
     path('core/', include('apps.core.api.routers.routes')),
+    path('attendance/', include('apps.attendance.api.routers.attendance')),
     # STATIC and MEDIA
     re_path(r'^media/(?P<path>.*)$',serve,{'document_root':settings.MEDIA_ROOT}),
     re_path(r'^static/(?P<path>.*)$',serve,{'document_root':settings.STATIC_ROOT}),

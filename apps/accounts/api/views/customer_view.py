@@ -27,18 +27,29 @@ class CustomerRegisterAPIView(APIView):
 
 
 class CustomerListView(generics.ListAPIView):
-    
-    queryset = User.objects.filter(is_staff = False)
     serializer_class = UserSerializer
     permission_classes = [IsAuthenticated, HasPermission]
     filter_backends = [filters.SearchFilter]
     search_fields = [
-        'document',
-        'email',       
-        'first_name',  
-        'last_name',  
-        'local__name'
+        "document",
+        "email",
+        "first_name",
+        "last_name",
+        "local__name",
     ]
+
+    def get_queryset(self):
+        user = self.request.user
+
+        qs = User.objects.select_related("local").filter(
+            is_staff=False,
+            is_active=True,
+        )
+
+        if user.groups.filter(name="worker").exists():
+            qs = qs.filter(local=user.local)
+
+        return qs
 
 
 class CustomerIdChangePasswordView(APIView):
