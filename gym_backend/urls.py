@@ -24,7 +24,7 @@ urlpatterns = [
     path('core/', include('apps.core.api.routers.routes')),
     path('attendance/', include('apps.attendance.api.routers.attendance')),
     path('expense/equipment/', include('apps.expense.api.routers.equipment')),
-    path('expense/mantenace/', include('apps.expense.api.routers.maintenance')),
+    path('expense/maintenace/', include('apps.expense.api.routers.maintenance')),
     # STATIC and MEDIA
     re_path(r'^media/(?P<path>.*)$',serve,{'document_root':settings.MEDIA_ROOT}),
     re_path(r'^static/(?P<path>.*)$',serve,{'document_root':settings.STATIC_ROOT}),
