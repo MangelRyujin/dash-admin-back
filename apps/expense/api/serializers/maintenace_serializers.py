@@ -1,9 +1,9 @@
 from rest_framework import serializers
-from apps.core.models import EquipmentMantenance
+from apps.core.models import EquipmentMaintenance
 
-class EquipmentMantenanceListSerializer(serializers.ModelSerializer):    
+class EquipmentMaintenanceListSerializer(serializers.ModelSerializer):    
     class Meta:
-        model = EquipmentMantenance
+        model = EquipmentMaintenance
         fields = [
             "id",
             "equipment",
@@ -13,9 +13,9 @@ class EquipmentMantenanceListSerializer(serializers.ModelSerializer):
             "updated_at",
         ]
 
-class EquipmentMantenanceCreateSerializer(serializers.ModelSerializer):
+class EquipmentMaintenanceCreateSerializer(serializers.ModelSerializer):
     class Meta:
-        model = EquipmentMantenance
+        model = EquipmentMaintenance
         fields = [
             "id",
             "equipment",
@@ -27,9 +27,9 @@ class EquipmentMantenanceCreateSerializer(serializers.ModelSerializer):
         read_only_fields = ["created_at", "updated_at"]
         
 
-class EquipmentMantenanceUpdateSerializer(serializers.ModelSerializer):
+class EquipmentMaintenanceUpdateSerializer(serializers.ModelSerializer):
     class Meta:
-        model = EquipmentMantenance
+        model = EquipmentMaintenance
         fields = [
             "id",
             "equipment",

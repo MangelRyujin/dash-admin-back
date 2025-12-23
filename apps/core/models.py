@@ -43,7 +43,7 @@ class Equipment(models.Model):
     def __str__(self):
         return f"{self.name} - {self.local.name}"
     
-class EquipmentMantenance(models.Model):
+class EquipmentMaintenance(models.Model):
     equipment = models.ForeignKey(Equipment, on_delete=models.CASCADE, related_name="equipment_maintenances")
     description = models.TextField()
     maintenance_date = models.DateTimeField()
