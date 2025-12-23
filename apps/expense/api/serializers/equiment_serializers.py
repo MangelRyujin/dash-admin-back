@@ -1,9 +1,7 @@
 from rest_framework import serializers
 from apps.core.models import Equipment, EquipmentMantenance
 
-class EquipmentListSerializer(serializers.ModelSerializer):
-    local_name = serializers.CharField(source='local.name', read_only=True)
-    
+class EquipmentListSerializer(serializers.ModelSerializer):    
     class Meta:
         model = Equipment
         fields = [
@@ -11,7 +9,6 @@ class EquipmentListSerializer(serializers.ModelSerializer):
             "name",
             "is_active",
             "local",
-            "local_name",
             "created_at",
             "updated_at",
         ]
