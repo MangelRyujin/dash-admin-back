@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from apps.core.models import Equipment, EquipmentMantenance
+from apps.core.models import Equipment
 
 class EquipmentListSerializer(serializers.ModelSerializer):    
     class Meta:
