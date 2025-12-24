@@ -2,7 +2,7 @@ from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 from apps.core.models import EquipmentMaintenance
 from utils.permission.admin import IsAdminGroup
-from apps.expense.api.serializers.maintenace_serializers import EquipmentMaintenanceCreateSerializer
+from apps.core.api.serializers.maintenace_serializers import EquipmentMaintenanceCreateSerializer
 
 
 class EquipmentMaintenanceCreateAPIView(generics.CreateAPIView):
@@ -12,3 +12,6 @@ class EquipmentMaintenanceCreateAPIView(generics.CreateAPIView):
     
     def perform_create(self, serializer):
         serializer.save()
+    
+    
+    

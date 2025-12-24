@@ -5,15 +5,14 @@ from apps.accounts.models import User
 
 class Expense(models.Model):
     EXPENSE_TYPES = (
-        ("0", "expense"),
-        ("1", "income"),
+        (0, "expense"),
+        (1, "income"),
     )
     motive = models.CharField(max_length=120)
     description = models.CharField(max_length=255)
-    type_document = models.CharField(
-        max_length=2,
+    type_document = models.IntegerField(
         choices=EXPENSE_TYPES,
-        default="0",
+        default=0,
         verbose_name="expense_type"
     )
     amount = models.FloatField(default=0 , validators=[MinValueValidator(0)])

@@ -3,7 +3,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import filters
 from rest_framework.pagination import PageNumberPagination
 from apps.core.models import Equipment
-from apps.expense.api.serializers.equiment_serializers import EquipmentListSerializer
+from apps.core.api.serializers.equiment_serializers import EquipmentListSerializer
 from utils.permission.admin import IsAdminGroup
 
 class EquipmentListAPIView(generics.ListAPIView):

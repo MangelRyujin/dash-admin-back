@@ -1,0 +1,1 @@
+# el eliminar elimina tambien el gasto asociado a ese pago
