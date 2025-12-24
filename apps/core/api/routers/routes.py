@@ -27,16 +27,16 @@ urlpatterns = [
     path('combo/plans/', PlanListAPIView.as_view(), name='combo-plans'),
     
     # Equipment
-    path("list/", EquipmentListAPIView.as_view(), name="equipment-list"),
-    path("create/", EquipmentCreateAPIView.as_view(), name="equipment-create"),
-    path("update/<int:pk>/", EquipmentUpdateAPIView.as_view(), name="equipment-update"),
-    path("delete/<int:pk>/", EquipmentDeleteAPIView.as_view(), name="equipment-delete"),
+    path("equipment/list/", EquipmentListAPIView.as_view(), name="equipment-list"),
+    path("equipment/create/", EquipmentCreateAPIView.as_view(), name="equipment-create"),
+    path("equipment/update/<int:pk>/", EquipmentUpdateAPIView.as_view(), name="equipment-update"),
+    path("equipment/delete/<int:pk>/", EquipmentDeleteAPIView.as_view(), name="equipment-delete"),
     
     # Maintenance
-    path("list/", EquipmentMaintenanceListAPIView.as_view(), name="equipment-maintenance-list"),
-    path("create/", EquipmentMaintenanceCreateAPIView.as_view(), name="equipment-maintenance-create"),
-    path("update/<int:pk>/", EquipmentMaintenanceUpdateAPIView.as_view(), name="equipment-maintenance-update"),
-    path("delete/<int:pk>/", EquipmentMaintenanceDeleteAPIView.as_view(), name="equipment-maintenance-delete"),
+    path("maintenance/list/", EquipmentMaintenanceListAPIView.as_view(), name="equipment-maintenance-list"),
+    path("maintenance/create/", EquipmentMaintenanceCreateAPIView.as_view(), name="equipment-maintenance-create"),
+    path("maintenance/update/<int:pk>/", EquipmentMaintenanceUpdateAPIView.as_view(), name="equipment-maintenance-update"),
+    path("maintenance/delete/<int:pk>/", EquipmentMaintenanceDeleteAPIView.as_view(), name="equipment-maintenance-delete"),
 ]
 
 urlpatterns += router.urls
