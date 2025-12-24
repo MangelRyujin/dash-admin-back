@@ -1,0 +1,1 @@
+# Mauro aqui usa un model viewset , el modelo no es complejo

@@ -3,6 +3,7 @@ from django.db import models
 from django.utils import timezone
 from apps.core.models import Local, Plan
 from utils.validates.general import validate_phone_number
+from django.core.validators import MinValueValidator
 
 class UserManager(BaseUserManager):
     def create_user(self, username, email, password=None, **extra_fields):
@@ -70,6 +71,7 @@ class User(AbstractUser):
         default="DNI",
         verbose_name="document_type"
     )
+    payment_worker = models.FloatField(default=0, validators=[MinValueValidator(0)])
     document = models.CharField(max_length=255, blank=True, null=True, unique=True)
     is_verify = models.BooleanField(default=False)
 
