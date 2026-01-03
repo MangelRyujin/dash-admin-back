@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'apps.core',
     'apps.attendance',
     'apps.expense',
+    'apps.payments',
     # THIRD_APPS
     'drf_yasg',
     'corsheaders',

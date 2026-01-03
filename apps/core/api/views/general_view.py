@@ -31,5 +31,5 @@ class PlanListAPIView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        plans_data = GeneralLocalSerializer(Plan.objects.all(), many=True).data
+        plans_data = GeneralPlanSerializer(Plan.objects.all(), many=True).data
         return Response(plans_data)
