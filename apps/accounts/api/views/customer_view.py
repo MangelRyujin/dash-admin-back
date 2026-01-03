@@ -1,5 +1,5 @@
 
-from apps.accounts.api.serializers.customer_serializer import CustomerRegisterSerializer, CustomerUpdateSerializer, CustomerUpdateStatusSerializer
+from apps.accounts.api.serializers.customer_serializer import CustomerRegisterSerializer, CustomerSerializer, CustomerUpdateSerializer, CustomerUpdateStatusSerializer
 from apps.accounts.api.serializers.login_serializer import  User
 from apps.accounts.api.serializers.user_serializer import UserSerializer
 from rest_framework.response import Response
@@ -15,7 +15,7 @@ class CustomerRegisterAPIView(APIView):
     permission_classes = [IsAuthenticated, HasPermission]
     
     def post(self, request):
-        serializer = CustomerRegisterSerializer(data=request.data)
+        serializer = CustomerRegisterSerializer(data=request.data, context={"request": request})
         if serializer.is_valid():
             user = serializer.save()
             user.is_staff = False
@@ -27,7 +27,7 @@ class CustomerRegisterAPIView(APIView):
 
 
 class CustomerListView(generics.ListAPIView):
-    serializer_class = UserSerializer
+    serializer_class = CustomerSerializer
     permission_classes = [IsAuthenticated, HasPermission]
     filter_backends = [filters.SearchFilter]
     search_fields = [
@@ -43,7 +43,6 @@ class CustomerListView(generics.ListAPIView):
 
         qs = User.objects.select_related("local").filter(
             is_staff=False,
-            is_active=True,
         )
 
         if user.groups.filter(name="worker").exists():
@@ -78,7 +77,7 @@ class CustomerToggleStatusAPIView(generics.UpdateAPIView):
         else:
             user.is_active = True
         user.save()
-        return Response(UserSerializer(user).data, status=status.HTTP_200_OK)
+        return Response(CustomerSerializer(user).data, status=status.HTTP_200_OK)
 
 class CustomerUpdateAPIView(generics.UpdateAPIView):
     permission_classes = (IsAuthenticated,HasPermission)

@@ -18,5 +18,6 @@ class GeneralPlanSerializer(serializers.ModelSerializer):
         fields = [
             "id",
             "name",
+            "price"
         ]
 

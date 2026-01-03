@@ -4,6 +4,13 @@ from apps.accounts.models import User
 from apps.core.models import Plan, Local
 
 class Payment(models.Model):
+    PAYMENT_METHOD_TYPES = (
+        (0, "CASH"),
+        (1, "YAPE"),
+        (2, "PLIN"),
+        (3, "CARD"),
+    )
+
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
@@ -19,6 +26,11 @@ class Payment(models.Model):
 
     local_id_snapshot = models.IntegerField(null=True, blank=True)
     local_name_snapshot = models.CharField(max_length=200, blank=True, null=True)
+
+    payment_method = models.PositiveIntegerField(
+        choices=PAYMENT_METHOD_TYPES,
+        default=0
+    )
 
     discount_amount = models.FloatField(
         default=0.0,

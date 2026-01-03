@@ -119,7 +119,6 @@ class Membership(models.Model):
     plan_id_snapshot = models.IntegerField(null=True, blank=True)
     plan_name_snapshot = models.CharField(max_length=200, blank=True, null=True)
     plan_price_snapshot = models.FloatField(default=0)
-    plan_duration_days_snapshot = models.IntegerField(default=0)
     
     local_id_snapshot = models.IntegerField(null=True, blank=True)
     local_name_snapshot = models.CharField(max_length=200, null=True, blank=True)
